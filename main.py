@@ -3,6 +3,9 @@ import kivy
 from kivy.app import App
 from kivy.uix.label import Label
 
+class test():
+    def Hi():
+        
 
 class MyApp(App):
 
