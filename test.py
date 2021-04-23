@@ -3,6 +3,9 @@ from kivymd.app import MDApp
 from kivy.lang import Builder, builder
 from kivymd.uix.screen import Screen
 from kivy.uix.screenmanager import Screen,ScreenManager
+from kivy.core.window import Window
+
+Window.size = (720,1280)
 
 screen_helper = """
 BoxLayout:
@@ -88,18 +91,27 @@ BoxLayout:
             icon: 'plus-box-multiple'
             ScrollView:
                 MDGridLayout:
-                    cols: 2
-
-                    padding: dp(200), dp(200)
-                    spacing: dp(40)
+                    cols: 1
+                    adaptive_height: True
+                    padding: dp(20), dp(20)
+                    spacing: dp(4)
                    
-                    MDIconButton:
-                        icon: "camera"
-                        user_font_size: "80sp"
-                    MDIconButton:
-                        icon: "check-circle"
-                        user_font_size: "80sp"
-                        """
+                    MDTextField:
+                        hint_text: "nombre del producto"
+                    MDTextField:
+                        hint_text: "precio base"
+                    MDGridLayout:
+                        cols: 2
+                        adaptive_height: True
+                        padding: dp(20), dp(20)
+                        spacing: dp(20)
+                        MDIconButton:
+                            icon: "camera"
+                            user_font_size: "130sp"
+                        MDIconButton:
+                            icon: "check-circle"
+                            user_font_size: "130sp"
+                            """
 
 class Test(MDApp):
 

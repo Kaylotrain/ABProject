@@ -1,18 +1,26 @@
-from kivy.uix.screenmanager import Screen
+
+from kivy.lang import Builder
 
 from kivymd.app import MDApp
-from kivymd.uix.button import MDRectangleFlatButton
+
+KV = '''
+MDScreen:
+
+    MDFloatingActionButtonSpeedDial:
+        data: app.data
+        root_button_anim: True
+'''
 
 
-class MainApp(MDApp):
+class Example(MDApp):
+    data = {
+        'Python': 'language-python',
+        'PHP': 'language-php',
+        'C++': 'language-cpp',
+    }
+
     def build(self):
-        screen = Screen()
-        screen.add_widget(
-            MDRectangleFlatButton(
-                text="Hello, World",
-                pos_hint={"center_x": 0.5, "center_y": 0.5},
-            )
-        )
-        return screen
+        return Builder.load_string(KV)
 
-MainApp().run()
+
+Example().run()
