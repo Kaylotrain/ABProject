@@ -1,0 +1,111 @@
+ScreenManager:
+    MenuScreen:
+    AddScreen:
+
+<MyTile@SmartTileWithLabel>
+    size_hint_y: None
+    height: "240dp"   
+<AddScreen>:
+    name : "add"
+    MDGridLayout:
+        cols: 2
+        MDTextField:
+            id: item_name
+            hint_text: "nombre"
+            font_size : "30sp"
+            helper_text_mode: "persistent"
+        MDTextField:
+            id: item_price
+            font_size : "30sp"
+            hint_text: "precio"
+            helper_text_mode: "persistent"
+        
+    MDFillRoundFlatButton
+        text: "añadir"
+        pos_hint: {'center_x':0.8,'center_y':0.8}
+        font_size: "30sp"
+        on_press:root.add_item(root.ids.item_name.text,root.ids.item_price.text,"dog.jpg")
+        
+        on_press: root.manager.current = "menu"
+    MDFillRoundFlatButton
+        text: "imagen"
+        pos_hint: {'center_x':0.2,'center_y':0.8}
+        font_size: "30sp"
+        on_press:root.add_item(root.ids.item_name.text,root.ids.item_price.text,"dog.jpg")
+        
+        on_press: root.manager.current = "menu"
+    
+        
+<MenuScreen>:
+    
+    name : "menu"
+    BoxLayout:
+        id : Box
+        orientation:'vertical'
+        
+        MDToolbar:
+            title: 'Bottom navigation'
+            md_bg_color: .2, .2, .2, 1
+            specific_text_color: 1, 1, 1, 1
+
+        MDBottomNavigation:
+            panel_color: .2, .2, .2, 1
+            id :navigation
+            MDBottomNavigationItem:
+                id: sceen1
+                name: 'screen 1'
+                text: 'calendario'
+                icon: 'language-python'
+                ScrollView:
+                    MDList:
+                        id:list
+
+                
+
+            MDBottomNavigationItem:
+                name: 'screen 2'
+                text: 'registro'
+                icon: 'language-cpp'
+                ScrollView:
+                    MDGridLayout:
+                        id: grid
+                        cols: 3
+                        adaptive_height: True
+                       
+
+                        
+                        
+
+                            
+                MDFillRoundFlatButton:
+                    text: "añadir"
+                    pos_hint: {'center_x':0.9,'center_y':0.05}
+                    on_press: root.manager.current = "add"
+                    font_size : "30sp"
+
+                MDFillRoundFlatButton:
+                    text:"eliminar"
+                    pos_hint: {'center_x':0.87,'center_y':0.15}
+                    font_size : "30sp"
+                    on_press: root.manager.get_screen("add").deletee()
+                
+            
+                
+
+
+        
+
+
+
+                    
+            
+
+
+   
+                    
+
+            
+                    
+                    
+
+                    
